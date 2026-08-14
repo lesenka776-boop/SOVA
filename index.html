@@ -494,8 +494,6 @@ footer b{color:var(--ink)}
         </div>
       </div>
       <form id="form" action="https://formspree.io/f/myegpdqn" method="POST">
-        <input type="hidden" name="form-name" value="sova-zayavki">
-        <input type="text" name="bot-field" style="display:none">
         <input type="text" name="name" id="fName" placeholder="Ваше имя" required>
         <input type="text" name="contact" id="fPhone" placeholder="Телефон или мессенджер" required>
         <select name="type" id="fType">
@@ -669,21 +667,20 @@ toTop.onclick = () => scrollTo({top:0, behavior:'smooth'});
 document.getElementById('form').addEventListener('submit', async e => {
   e.preventDefault();
   const f = e.target;
-  const data = new URLSearchParams();
-  data.append('form-name', 'sova-zayavki');
-  data.append('name', document.getElementById('fName').value);
-  data.append('contact', document.getElementById('fPhone').value);
-  data.append('type', document.getElementById('fType').value);
-  data.append('msg', document.getElementById('fMsg').value);
-  try {
-    if (location.protocol.startsWith('http')) {
-      await fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:data });
-    } else { throw 0; }
-  } catch (err) { /* локальный режим */ }
   const ok = document.getElementById('formOk');
-  ok.textContent = '🦉 Ух! Заявка принята — Олеся ответит в MAX/VK в течение рабочего дня.';
-  ok.style.display = 'block';
-  f.reset();
+  try {
+    const r = await fetch(f.action, { method:'POST', body:new FormData(f) });
+    if (r.ok || r.status === 200) {
+      ok.textContent = '🦉 Ух! Заявка принята — Олеся ответит в течение рабочего дня.';
+      ok.style.display = 'block';
+      f.reset();
+    } else {
+      throw new Error(r.status);
+    }
+  } catch (err) {
+    ok.textContent = '🦉 Почта спит — напишите в MAX или VK, кнопки слева.';
+    ok.style.display = 'block';
+  }
 });
 </script>
 </body>
