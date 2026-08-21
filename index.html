@@ -168,6 +168,9 @@ section{padding:70px 0}
 .contact input,.contact select,.contact textarea{padding:14px;border:2px solid var(--line);border-radius:12px;font-size:14.5px;font-family:'Manrope';background:var(--bg)}
 .contact input:focus,.contact select:focus,.contact textarea:focus{outline:none;border-color:var(--acc)}
 .form-ok{display:none;font-weight:800;color:var(--acc-d);font-size:15px;animation:hoot .6s cubic-bezier(.3,1.6,.5,1)}
+.consent{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--mut)}
+.consent input{width:16px;height:16px;padding:0;flex:none;margin-top:2px}
+.consent a{color:var(--acc-d)}
 @keyframes hoot{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
 footer{padding:30px 0;text-align:center;color:var(--mut);font-size:13px;border-top:1px solid var(--line)}
 footer b{color:var(--ink)}
@@ -500,6 +503,7 @@ footer b{color:var(--ink)}
           <option>Лендинг + трафик</option><option>Лендинг</option><option>Экспресс-лендинг</option><option>Сайт-визитка</option><option>SEO-запуск</option><option>Тексты</option><option>Логотип + стиль</option><option>Ещё не знаю — нужна консультация</option>
         </select>
         <textarea name="msg" id="fMsg" rows="3" placeholder="Пара слов о задаче (или готовая конфигурация из калькулятора)"></textarea>
+               <label class="consent"><input type="checkbox" required> Согласен на обработку персональных данных и с <a href="policy.html" target="_blank">политикой конфиденциальности</a></label>
         <button type="submit" class="btn">Отправить заявку</button>
         <div class="form-ok" id="formOk"></div>
       </form>
@@ -507,7 +511,8 @@ footer b{color:var(--ink)}
   </div>
 </section>
 
-<footer><div class="container"><b>SOVA✦</b> · Олеся ZiltSOVA · сайт + трафик = заявки · договор, чек, все исходники — ваши · © 2026</div></footer>
+<footer><div class="container"><b>SOVA✦</b> · Олеся ZiltSOVA · сайт + трафик = заявки · договор, чек, все исходники — ваши · <a href="policy.html" style="color:var(--mut)">Политика конфиденциальности</a> · © 2026</div></footer>
+  
 
 <div class="mess">
   <a href="https://max.ru/u/f9LHodD0cOJxaHjP7euO9rHNKsdUFfqWjvkFNKgqDM4CbcKD-4OMJVWttP4" target="_blank" class="mmax" title="Написать в MAX">💬</a>
